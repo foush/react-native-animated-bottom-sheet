@@ -5,22 +5,36 @@ Animated bottom sheet library for react native
 ## Installation
 
 ```sh
+yarn add react-native-animated-bottom-sheet
+
+OR
+
 npm install react-native-animated-bottom-sheet
 ```
 
 ## Usage
 
-```js
-import { multiply } from "react-native-animated-bottom-sheet";
+```tsx
+import { ModalBottomSheet } from "react-native-animated-bottom-sheet";
 
 // ...
 
-const result = await multiply(3, 7);
+const [isVisible, setIsVisible] = useState(false);
+<Button
+  onPress={() => {
+    console.log('current visibility: ', isVisible);
+    setIsVisible(v => !v);
+  }}
+  title="Toggle"
+/>
+<ModalBottomSheet
+  isVisible={isVisible}
+  onHideComplete={() => {
+    setIsVisible(false);
+  }}>
+  <Text>Hello World!</Text>
+</ModalBottomSheet>
 ```
-
-## Contributing
-
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
 ## License
 
